@@ -15,7 +15,6 @@ logger = logging.getLogger(__name__)
 
 def is_ip_valid(ip):
     fields = ip.split(".")
-    print(fields)
     if len(fields) != 4:
         return False
 
@@ -23,7 +22,7 @@ def is_ip_valid(ip):
         if not field.isdigit():
             return False
 
-        if 0 < int(field) < 255:
+        if int(field) < 0 or int(field) > 255:
             return False
 
     return True
