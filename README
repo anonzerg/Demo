@@ -1,0 +1,6 @@
+basic utility for connecting to server.
+
+how to run:
+
+chmod +x main.py
+./main.py
