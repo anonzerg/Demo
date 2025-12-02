@@ -32,7 +32,7 @@ class Connect:
         self.root = root
         self.root.title("remote desktop connector")
         self.root.geometry("1280x720")
-        self.root.resizable(False, False)
+        #self.root.resizable(False, False)
         
         self.config = "config.json"
         
@@ -47,10 +47,9 @@ class Connect:
         
         self.root.columnconfigure(0, weight=1)
         frame.columnconfigure(1, weight=1)
-        
+
         ttk.Label(frame, text="IP Address").grid(row=0, column=0, sticky=tk.W, pady=pady)
         self.ip = ttk.Entry(frame, width=64)
-        # self.check_ip()
         self.ip.grid(row=0, column=1, sticky="ew", padx=padx, pady=pady)
         
         ttk.Label(frame, text="Username").grid(row=1, column=0, sticky=tk.W, pady=pady)
@@ -64,9 +63,9 @@ class Connect:
         self.connect_button = ttk.Button(frame, text="Connect", command=self.connect)
         self.connect_button.grid(row=3, column=0, columnspan=2, pady=pady)
         
-        self.ip.bind("<KeyRelease>", lambda e: self.save_config())
-        self.username.bind("<KeyRelease>", lambda e: self.save_config())
-        self.password.bind("<KeyRelease>", lambda e: self.save_config())
+        self.ip.bind("<KeyRelease>", lambda event: self.save_config())
+        self.username.bind("<KeyRelease>", lambda event: self.save_config())
+        self.password.bind("<KeyRelease>", lambda event: self.save_config())
     
     def load_config(self):
         if os.path.exists(self.config):
