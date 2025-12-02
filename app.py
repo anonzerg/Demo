@@ -40,27 +40,29 @@ class Connect:
         self.load_config()
     
     def create_widgets(self):
-        frame = ttk.Frame(self.root, padding="20")
+        padx, pady = 20, 10
+
+        frame = ttk.Frame(self.root, padding="100")
         frame.grid(row=0, column=0, sticky="nsew")
         
         self.root.columnconfigure(0, weight=1)
         frame.columnconfigure(1, weight=1)
         
-        ttk.Label(frame, text="ip:").grid(row=0, column=0, sticky=tk.W, pady=10)
+        ttk.Label(frame, text="IP Address").grid(row=0, column=0, sticky=tk.W, pady=pady)
         self.ip = ttk.Entry(frame, width=64)
         # self.check_ip()
-        self.ip.grid(row=0, column=1, sticky="ew", pady=10)
+        self.ip.grid(row=0, column=1, sticky="ew", padx=padx, pady=pady)
         
-        ttk.Label(frame, text="username:").grid(row=1, column=0, sticky=tk.W, pady=10)
+        ttk.Label(frame, text="Username").grid(row=1, column=0, sticky=tk.W, pady=pady)
         self.username = ttk.Entry(frame, width=64)
-        self.username.grid(row=1, column=1, sticky="ew", pady=10)
+        self.username.grid(row=1, column=1, sticky="ew", padx=padx, pady=pady)
         
-        ttk.Label(frame, text="password:").grid(row=2, column=0, sticky=tk.W, pady=10)
+        ttk.Label(frame, text="Password").grid(row=2, column=0, sticky=tk.W, pady=10)
         self.password = ttk.Entry(frame, width=64, show="*")
-        self.password.grid(row=2, column=1, sticky="ew", pady=10)
+        self.password.grid(row=2, column=1, sticky="ew", padx=padx, pady=pady)
         
-        self.connect_button = ttk.Button(frame, text="connect", command=self.connect)
-        self.connect_button.grid(row=3, column=0, columnspan=2, pady=20)
+        self.connect_button = ttk.Button(frame, text="Connect", command=self.connect)
+        self.connect_button.grid(row=3, column=0, columnspan=2, pady=pady)
         
         self.ip.bind("<KeyRelease>", lambda e: self.save_config())
         self.username.bind("<KeyRelease>", lambda e: self.save_config())
