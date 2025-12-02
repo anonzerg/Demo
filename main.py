@@ -2,8 +2,16 @@
 
 import logging
 import sys
+import tkinter as tk
+
+from tkinter import ttk
+
+from app import Connect
 
 def main() -> None:
+    root = tk.Tk()
+    app = Connect(root)
+    root.mainloop()
 
     return None
 
@@ -13,10 +21,10 @@ if __name__ == "__main__":
         format="[%(levelname)s] %(message)s",
         level=logging.INFO
     )
-    log = logging.getLogger(__name__)
+    logger = logging.getLogger(__name__)
 
     try:
         main()
     except KeyboardInterrupt as e:
-        log.error(e)
+        logger.error(e)
         sys.exit(1)
